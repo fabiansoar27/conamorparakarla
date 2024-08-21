@@ -10,16 +10,16 @@ let score_value = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 let love_score = document.getElementById('love_score');
 
 calculate_btn.onclick = () => {
-    if (boyfriend.value != "" && girlfriend.value != "") {
+    if (boyfriend.value.trim() != "" && girlfriend.value.trim() != "") {
         output_section.style.top = 0;
         music.currentTime = 0;
         music.play();
-        girlfriend_output.innerText = girlfriend.value;
-        boyfriend_output.innerText = boyfriend.value;
+        girlfriend_output.innerText = girlfriend.value.trim();
+        boyfriend_output.innerText = boyfriend.value.trim();
 
-        // Verifica si los nombres son "Fabián" o "Fabian" y "Karla"
-        if ((boyfriend.value.toLowerCase() === "fabián" || boyfriend.value.toLowerCase() === "fabian") && 
-            girlfriend.value.toLowerCase() === "karla") {
+        // Verifica si los nombres son "Fabián" o "Fabian" y "Karla", ignorando espacios adicionales
+        if ((boyfriend.value.trim().toLowerCase() === "fabián" || boyfriend.value.trim().toLowerCase() === "fabian") && 
+            girlfriend.value.trim().toLowerCase() === "karla") {
             love_score.innerText = 10; // Fija el resultado a 10
         } else {
             let random_score = Math.floor(Math.random() * score_value.length);
